@@ -31,7 +31,7 @@
                     <ul class="card" v-for="result in [...searchResult.movies, ...searchResult.tvSeries]">
                         <li class="poster">
                             <img :src="baseUrl + 'w200' + result.poster_path" v-if="result.poster_path" alt="">
-							                       <img :src="'./img/' + '56.png'" v-if="!result.poster_path">
+							<img :src="'./img/' + '56.png'" v-if="!result.poster_path">
                         </li>
                         <li class="title-main">
                             <!--TITOLO-->

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Boolflix</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="./css/style.css">
+
+    </head>
+    <body>
+
+        <div class="app-bkgr" id="app">
+            <!--CONTAINER-->
+            <div class="container">
+                <!--HEADER-->
+                <header class="header-main">
+                    <input v-model="searched" placeholder="cerca" @keyup.enter="getSearchResult">
+                    <button @click="getSearchResult">Cerca</button>
+                </header>
+
+                <!--MAIN CONTENT-->
+                <main v-if="loaded.movies && loaded.tvSeries">
+                    <!--APPUNTI-->
+                    <!--V-FOR Vedi Mapping an Array to Elements with v-for e v-for with an Object-->
+                    <!--La Spread syntax consente un iterabile come un'espressione di un array o una stringa da espandere in punti in cui
+                         sono previsti zero o più argomenti (per chiamate di funzione) o elementi (per letterali di array) o un'espressione di oggetto
+                          da espandere in posizioni dove zero o più sono previste coppie di valori (per valori letterali oggetto)..-->
+
+                    <ul class="card" v-for="result in [...searchResult.movies, ...searchResult.tvSeries]">
+                        <li class="poster">
+                            <img :src="baseUrl + 'w200' + result.poster_path" v-if="result.poster_path" alt="">
+							                       <img :src="'./img/' + '56.png'" v-if="!result.poster_path">
+                        </li>
+                        <li class="title-main">
+                            <!--TITOLO-->
+                            <span>Titolo: </span>
+                            <span v-if="searchResult.movies.includes(result)">
+                                {{ result.title }}
+                            </span>
+                            <span v-else>
+                                {{ result.name }}
+                            </span>
+                        </li>
+
+                        <!--TITOLO ORIGINALE-->
+                        <li class="title-main">
+                        <span>Titolo originale: </span>
+
+                            <span v-if="searchResult.movies.includes(result)">
+                                {{ result.original_title }}
+                            </span>
+                            <span v-else>
+                                {{ result.original_name }}
+
+                            </span>
+                        </li>
+
+                        <!--LINGUA-->
+                        <li class="language title-main">
+                        <span>Lingua: </span>
+                            <img :src="'./img/' + result.original_language + '.png'" :alt="result.original_language">
+                        </li>
+                        <span>Voto: </span>
+                        <li>
+                            <i class="fas fa-star" v-for="n in toStars(result.vote_average)"></i>
+                            <i class="far fa-star" v-for="n in (5 - toStars(result.vote_average))"></i>
+                        </li>
+                    </ul>
+                </main>
+            </div>
+        </div>
+
+        <!--VUE JS-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <!-- JS - AXIOS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
+        <script src="./js/main.js" charset="utf-8"></script>
+
+    </body>
+</html>

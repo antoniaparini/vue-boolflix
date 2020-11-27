@@ -1,0 +1,70 @@
+/*GENERAL STYLES*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+.app-bkgr{
+    background: #1e2d3b;
+}
+.container {
+    max-width: 1250px;
+    margin: auto;
+    background: #1e2d3b;
+}
+
+header{
+    display: flex;
+    padding: 50px;
+    margin-bottom: 50px;    
+}
+
+
+header input {
+    flex-grow: 1;
+}
+
+header button {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border-style: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 158px;
+    list-style-type: none;
+    margin: 0 25px 25px 25px;
+}
+.card .poster {
+   
+    height: 237px;
+    background-color: #2e3a46;
+    color: white;
+    padding: 20px;
+}
+
+.card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.card .language img {
+    width: 25px;
+}
+
+.title-main {
+    margin-top: 10px;
+}

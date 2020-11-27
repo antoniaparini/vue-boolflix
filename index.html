@@ -10,13 +10,20 @@
 
     </head>
     <body>
-
+        <!--APP-->
         <div class="app-bkgr" id="app">
+          <!--HEADER CONTAINER-->
+          <div class="header-container">
+            <img class="logo-netflix"src="./img/Netflix-Logo.png" alt="logonetflix">
+
+          </div>
+
             <!--CONTAINER-->
             <div class="container">
+
                 <!--HEADER-->
                 <header class="header-main">
-                    <input v-model="searched" placeholder="cerca" @keyup.enter="getSearchResult">
+                    <input v-model="searched" placeholder="Titoli, persone, generi" @keyup.enter="getSearchResult">
                     <button @click="getSearchResult">Cerca</button>
                 </header>
 
@@ -25,13 +32,13 @@
                     <!--APPUNTI-->
                     <!--V-FOR Vedi Mapping an Array to Elements with v-for e v-for with an Object-->
                     <!--La Spread syntax consente un iterabile come un'espressione di un array o una stringa da espandere in punti in cui
-                         sono previsti zero o più argomenti (per chiamate di funzione) o elementi (per letterali di array) o un'espressione di oggetto
-                          da espandere in posizioni dove zero o più sono previste coppie di valori (per valori letterali oggetto)..-->
+                      sono previsti zero o più argomenti (per chiamate di funzione) o elementi (per letterali di array) o un'espressione di oggetto
+                      da espandere in posizioni dove zero o più sono previste coppie di valori (per valori letterali oggetto)..-->
 
                     <ul class="card" v-for="result in [...searchResult.movies, ...searchResult.tvSeries]">
                         <li class="poster">
                             <img :src="baseUrl + 'w200' + result.poster_path" v-if="result.poster_path" alt="">
-							<img :src="'./img/' + '56.png'" v-if="!result.poster_path">
+							                       <img :src="'./img/' + '56.png'" v-if="!result.poster_path">
                         </li>
                         <li class="title-main">
                             <!--TITOLO-->
@@ -71,6 +78,21 @@
                 </main>
             </div>
         </div>
+
+
+        <!--FOOTER-->
+        <footer class="footer-container">
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="under-footer">
+            Netflix 2020
+          </div>
+        </footer>
+
 
         <!--VUE JS-->
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
